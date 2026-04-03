@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maison de santé L'Avicenne</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #2d4a6e;
+      --navy-light: #3d6491;
+      --navy-pale: #e8eef5;
+      --accent: #4a90b8;
+      --white: #ffffff;
+      --text: #333d4b;
+      --muted: #6b7a8d;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0 2rem;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-top {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+    }
+
+    .logo-divider {
+      height: 1.5px;
+      background: var(--navy);
+      margin: 3px 0;
+    }
+
+    .logo-main {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.06em;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-left: 2rem;
+      transition: color .2s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .btn-header {
+      margin-left: 2rem;
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      transition: background .2s !important;
+    }
+
+    .btn-header:hover { background: var(--navy-light) !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--accent) 100%);
+      color: var(--white);
+      padding: 100px 2rem 90px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 span { opacity: 0.75; font-weight: 300; }
+
+    .hero p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      opacity: 0.9;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--navy);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.6);
+      transition: background .2s, border-color .2s;
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--navy-pale);
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid #d4dde8;
+    }
+
+    .trust-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--navy);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .trust-item svg { flex-shrink: 0; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 80px 2rem; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); }
+
+    .services-header { text-align: center; margin-bottom: 3rem; }
+    .services-header .section-sub { margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 2rem 1.75rem;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(45,74,110,0.12);
+      border-color: var(--accent);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--navy-pale);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-icon svg { color: var(--navy); }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── WHY US ── */
+    #pourquoi { background: var(--navy-pale); }
+
+    .why-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .why-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .why-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .why-dot {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .why-dot svg { color: white; }
+
+    .why-item h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .why-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    .why-visual {
+      background: linear-gradient(145deg, var(--navy) 0%, var(--accent) 100%);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      color: white;
+      text-align: center;
+    }
+
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+
+    .stat-box {
+      background: rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 1.25rem 1rem;
+    }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-label { font-size: 0.78rem; opacity: 0.8; font-weight: 400; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+
+    .contact-row {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--navy-pale);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg { color: var(--navy); }
+
+    .contact-row span { font-size: 0.9rem; color: var(--text); }
+    .contact-row strong { display: block; font-size: 0.75rem; color: var(--muted); font-weight: 500; margin-bottom: 2px; }
+
+    /* ── FORM ── */
+    .form-card {
+      background: var(--navy-pale);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .form-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid #c9d4e0;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      background: white;
+      color: var(--text);
+      transition: border-color .2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(74,144,184,0.12); }
+
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .btn-form {
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+      font-family: inherit;
+    }
+
+    .btn-form:hover { background: var(--navy-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.82rem;
+    }
+
+    footer strong { color: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .why-layout, .contact-layout { grid-template-columns: 1fr; }
+      .why-visual { order: -1; }
+      .trust-inner { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <span class="logo-top">Maison de santé</span>
+        <div class="logo-divider"></div>
+        <span class="logo-main">L'AVICENNE</span>
+      </div>
+      <nav>
+        <a href="#services">Nos soins</a>
+        <a href="#pourquoi">Pourquoi nous</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn-header">Prendre rendez-vous</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🏥 Maison de santé pluridisciplinaire</div>
+      <h1>Votre santé, <span>notre priorité</span><br>au quotidien</h1>
+      <p>Médecine générale, physiothérapie, massages et soins esthétiques réunis sous un même toit pour prendre soin de vous, corps et âme.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
+        <a href="#services" class="btn-outline">Découvrir nos soins</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        Professionnels certifiés
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Rendez-vous rapides
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+        Équipe pluridisciplinaire
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        Approche bienveillante
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-header">
+        <div class="section-label">Nos prestations</div>
+        <h2 class="section-title">Des soins complets pour chaque besoin</h2>
+        <p class="section-sub">Une équipe de spécialistes engagés à vous offrir une prise en charge globale et personnalisée.</p>
+      </div>
+      <div class="services-grid">
+
+        <!-- Médecine -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+            </svg>
+          </div>
+          <h3>Médecine générale</h3>
+          <p>Consultations médicales, suivi de maladies chroniques, bilans de santé, prescriptions et orientations vers les spécialistes adaptés.</p>
+        </div>
+
+        <!-- Physio -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3>Physiothérapie</h3>
+          <p>Rééducation fonctionnelle, traitement des douleurs musculo-squelettiques, rétablissement post-opératoire et prévention des blessures.</p>
+        </div>
+
+        <!-- Massages -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/>
+            </svg>
+          </div>
+          <h3>Massages thérapeutiques</h3>
+          <p>Massages de détente, sportifs et thérapeutiques pour soulager les tensions, améliorer la circulation et favoriser le bien-être général.</p>
+        </div>
+
+        <!-- Esthétique -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
+          </div>
+          <h3>Soins esthétiques</h3>
+          <p>Traitements du visage, soins corporels et protocoles beauté pour sublimer votre apparence et renforcer votre confiance en vous.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="pourquoi">
+    <div class="section-inner">
+      <div class="why-layout">
+        <div>
+          <div class="section-label">Notre différence</div>
+          <h2 class="section-title">Une prise en charge humaine et complète</h2>
+          <p class="section-sub">À la Maison de santé L'Avicenne, nous croyons que la santé est globale. C'est pourquoi nous réunissons des experts complémentaires pour vous accompagner à chaque étape.</p>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-dot">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div>
+                <h4>Un seul lieu, toutes les spécialités</h4>
+                <p>Évitez les allers-retours entre différents cabinets. Tout est accessible sous un même toit.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-dot">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div>
+                <h4>Suivi coordonné entre praticiens</h4>
+                <p>Nos équipes communiquent pour assurer une continuité de soins optimale et personnalisée.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-dot">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div>
+                <h4>Cadre chaleureux et bienveillant</h4>
+                <p>Un environnement conçu pour vous mettre à l'aise et favoriser votre guérison.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-visual">
+          <p style="font-size:0.8rem;opacity:0.8;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">L'Avicenne en chiffres</p>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-num">4</div>
+              <div class="stat-label">Spécialités médicales</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">1</div>
+              <div class="stat-label">Lieu unique & accessible</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">5★</div>
+              <div class="stat-label">Satisfaction patients</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">360°</div>
+              <div class="stat-label">Prise en charge globale</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-layout">
+        <div>
+          <div class="section-label">Nous contacter</div>
+          <h2 class="section-title">Prendre rendez-vous</h2>
+          <p class="section-sub">Notre équipe est à votre disposition pour répondre à vos questions et trouver le créneau qui vous convient.</p>
+          <div class="contact-info">
+            <div class="contact-row">
+              <div class="contact-icon">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div>
+                <strong>Téléphone</strong>
+                <span>+33 (0)1 XX XX XX XX</span>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <strong>Email</strong>
+                <span>contact@lavicenne-sante.fr</span>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <strong>Adresse</strong>
+                <span>Maison de santé L'Avicenne</span>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <strong>Horaires</strong>
+                <span>Lun – Ven : 8h00 – 19h00 &nbsp;|&nbsp; Sam : 9h00 – 13h00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3>Demande de rendez-vous</h3>
+          <div class="form-group">
+            <label>Nom complet</label>
+            <input type="text" placeholder="Jean Dupont" />
+          </div>
+          <div class="form-group">
+            <label>Téléphone</label>
+            <input type="tel" placeholder="+33 6 XX XX XX XX" />
+          </div>
+          <div class="form-group">
+            <label>Type de soin souhaité</label>
+            <select>
+              <option value="">Sélectionner un soin…</option>
+              <option>Médecine générale</option>
+              <option>Physiothérapie</option>
+              <option>Massage thérapeutique</option>
+              <option>Soins esthétiques</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message (optionnel)</label>
+            <textarea placeholder="Décrivez brièvement votre demande…"></textarea>
+          </div>
+          <button class="btn-form">Envoyer ma demande →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>Maison de santé L'Avicenne</strong> — Médecine · Physiothérapie · Massages · Soins esthétiques<br/>
+    <span style="opacity:0.5;font-size:0.75rem;">© 2026 L'Avicenne. Tous droits réservés.</span>
+  </footer>
+
+</body>
+</html>
